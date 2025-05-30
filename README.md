@@ -5,8 +5,8 @@
 ### Anggota Kelompok:
 - Andrew Kristofer Jian (NPM. 2206059673)
 - Hanif Nur Ilham Sanjaya (NPM. 2206059692)
-- Farhan Ramadhani Zakiyyandi (NPM. 2206081945)
-- Filaga Tifira Muthi (NPM. 2206811323)
+- Farhan Ramadhani Zakiyyandi (NPM. 2306220412)
+- Filaga Tifira Muthi (NPM. 2306208445)
 
 ### Deskripsi
 Program ini mengimplementasikan metode numerik **Aturan Trapesium (*Trapezoidal Rule*)** untuk menghitung jarak tempuh benda berdasarkan fungsi kecepatan linear \( v(t) = 2t + 3 \) (dalam m/s) pada rentang waktu \( t = 0 \) hingga \( t = 5 \) detik. Aturan Trapesium, yang dijelaskan dalam buku *Numerical Methods for Engineers* oleh Chapra dan Canale, digunakan untuk mengaproksimasi integral definit \( \int_0^5 v(t) \, dt \), yang mewakili jarak tempuh.
