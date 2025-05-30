@@ -1,4 +1,4 @@
-# Tugas Pemrograman B - Kelompok 9
+# Tugas Pemrograman B - Kelompok 1
 
 ## Judul: Implementasi Aturan Trapesium (*Trapezoidal Rule*) untuk Menghitung Jarak Tempuh
 
