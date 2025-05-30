@@ -13,30 +13,30 @@
 
 \title{Implementasi Aturan Trapesium (\textit{Trapezoidal Rule}) untuk Menghitung Jarak Tempuh Benda}
 
-% Bagian Author tetap sama
-\author{\IEEEauthorblockN{1\textsuperscript{st} Andrew Kristofer Jian}
-\IEEEauthorblockA{\textit{Fakultas Teknik} \\
-\textit{Universitas Indonesia}\\
-Depok, Indonesia \\
-andrewjian4@gmail.com}
+\author{
+    \IEEEauthorblockN{1\textsuperscript{st} Andrew Kristofer Jian}
+    \IEEEauthorblockA{\textit{Fakultas Teknik} \\
+    \textit{Universitas Indonesia}\\
+    Depok, Indonesia \\
+    andrewjian4@gmail.com}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} Hanif Nur Ilham Sanjaya}
-\IEEEauthorblockA{\textit{Fakultas Teknik} \\
-\textit{Universitas Indonesia}\\
-Depok, Indonesia \\
-hanifnurjaya24@gmail.com}
+    \IEEEauthorblockN{2\textsuperscript{nd} Hanif Nur Ilham Sanjaya}
+    \IEEEauthorblockA{\textit{Fakultas Teknik} \\
+    \textit{Universitas Indonesia}\\
+    Depok, Indonesia \\
+    hanifnurjaya24@gmail.com}
+\\ % Baris baru untuk penulis berikutnya
+    \IEEEauthorblockN{3\textsuperscript{rd} Farhan Ramadhani Zakiyyandi}
+    \IEEEauthorblockA{\textit{Fakultas Teknik} \\
+    \textit{Universitas Indonesia}\\
+    Depok, Indonesia \\
+    farhanrz2004@gmail.com}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} Farhan Ramadhani Zakiyyandi}
-\IEEEauthorblockA{\textit{Fakultas Teknik} \\
-\textit{Universitas Indonesia}\\
-Depok, Indonesia \\
-farhanrz2004@gmail.com}
-\and
-\IEEEauthorblockN{4\textsuperscript{th} Filaga Tifira Muthi}
-\IEEEauthorblockA{\textit{Fakultas Teknik} \\
-\textit{Universitas Indonesia}\\
-Depok, Indonesia \\
-filagatifiramuthi1@gmail.com}
+    \IEEEauthorblockN{4\textsuperscript{th} Filaga Tifira Muthi}
+    \IEEEauthorblockA{\textit{Fakultas Teknik} \\
+    \textit{Universitas Indonesia}\\
+    Depok, Indonesia \\
+    filagatifiramuthi1@gmail.com}
 }
 
 \maketitle
@@ -53,7 +53,7 @@ Aturan Trapesium, integrasi numerik, jarak tempuh, metode numerik, bahasa C, fun
 Dalam bidang teknik, integrasi numerik sering digunakan untuk menyelesaikan masalah yang melibatkan data kontinu, seperti menghitung jarak tempuh berdasarkan kecepatan atau luas di bawah kurva. Aturan Trapesium adalah metode sederhana namun efektif untuk mengaproksimasi integral definit, yang dijelaskan dalam buku \textit{Numerical Methods for Engineers} oleh Chapra dan Canale \cite{b1}. Tugas ini bertujuan mengimplementasikan Aturan Trapesium untuk menghitung jarak tempuh benda berdasarkan fungsi kecepatan linear \( v(t) = 2t + 3 \) menggunakan bahasa pemrograman C. Laporan ini menjelaskan teori metode, implementasi program, data yang digunakan, serta analisis hasil untuk memverifikasi akurasi metode, termasuk diskusi mengenai perilaku metode untuk fungsi linear.
 
 \section{Studi Literatur}
-Aturan Trapesium adalah metode integrasi numerik yang mengaproksimasi integral definit \( \int_a^b f(x) \, dx \). Metode ini relevan dalam aplikasi teknik yang membutuhkan perhitungan integral secara numerik \cite{b1}.
+Aturan Trapesium adalah metode integrasi numerik yang mengaproksimasi integral definit \( \int_a^b f(x) \, dx \). Metode ini relevan dalam aplikasi teknik yang membutuhkan perhitungan integral secara numerik \cite{b1}. Penggunaan Aturan Trapesium untuk perhitungan area di bawah kurva juga telah didiskusikan dalam berbagai konteks aplikasi \cite{b_yeh}.
 
 \subsection{Latar Belakang Teori}
 Aturan Trapesium membagi rentang integrasi \([a, b]\) menjadi \( n \) subinterval berukuran \( h = \frac{b-a}{n} \). Area di bawah kurva diaproksimasi sebagai trapesium pada setiap subinterval, dengan rumus \cite{b1}:
@@ -68,10 +68,13 @@ Metode ini sering digunakan dalam analisis gerak (misalnya, menghitung jarak dar
 
 \section{Penjelasan Data}
 Studi kasus ini menggunakan fungsi kecepatan linear \( v(t) = 2t + 3 \) (dalam m/s) untuk menghitung jarak tempuh benda pada rentang waktu \( t = 0 \) hingga \( t = 5 \) detik. Fungsi ini dipilih karena memiliki solusi analitik yang mudah diverifikasi:
-\begin{equation}
-s = \int_0^5 (2t + 3) \, dt = \left[ t^2 + 3t \right]_0^5 = (5^2 + 3 \times 5) - (0^2 + 3 \times 0) = 25 + 15 = 40 \, \text{meter}.
+\begin{align}
+s &= \int_0^5 (2t + 3) \, dt \nonumber \\
+  &= \left[ t^2 + 3t \right]_0^5 \nonumber \\
+  &= (5^2 + 3 \times 5) - (0^2 + 3 \times 0) \nonumber \\
+  &= 25 + 15 = 40 \, \text{meter}.
 \label{eq:analytic}
-\end{equation}
+\end{align}
 Parameter numerik yang digunakan dalam salah satu pengujian meliputi:
 \begin{itemize}
     \item Batas integrasi: \( a = 0 \), \( b = 5 \).
@@ -130,8 +133,12 @@ Tabel \ref{tab:results} menunjukkan hasil untuk berbagai jumlah subinterval. Kar
 \end{table}
 Seperti yang ditunjukkan pada Tabel \ref{tab:results}, jarak numerik yang dihitung konsisten menghasilkan nilai 40.0000 meter, dan kesalahan relatifnya mendekati nol untuk semua nilai \( n \) yang diuji. Perbedaan sangat kecil yang mungkin muncul pada implementasi praktis disebabkan oleh akumulasi error pembulatan dalam aritmetika floating-point, bukan dari kesalahan metode Aturan Trapesium itu sendiri untuk kasus linear ini.
 
-\subsection{Keterbatasan Metode dan Pengaruh Presisi Komputer}
-Untuk fungsi non-linear, Aturan Trapesium memiliki kesalahan pemotongan \(O(h^2)\). Namun, dalam kasus studi ini dengan fungsi linear \(v(t) = 2t+3\), metode ini secara teoritis eksak. Keterbatasan yang diamati bukanlah dari metode, melainkan dari representasi bilangan floating-point pada komputer. Meskipun secara matematis hasilnya eksak, operasi aritmetika pada komputer dapat menghasilkan error pembulatan yang sangat kecil. Program yang ditulis dengan baik dan penggunaan tipe data \texttt{double} dapat meminimalkan dampak ini, seperti yang terlihat pada hasil di mana kesalahan absolut dan relatif sangat mendekati nol. Peningkatan \( n \) pada fungsi linear tidak bertujuan untuk mengurangi kesalahan metode (karena sudah nol), tetapi pada fungsi non-linear, peningkatan \( n \) akan mengurangi kesalahan pemotongan.
+\subsection{Keterbatasan Metode, Presisi Komputer, dan Potensi Peningkatan}
+Untuk fungsi non-linear, Aturan Trapesium memiliki kesalahan pemotongan \(O(h^2)\). Namun, dalam kasus studi ini dengan fungsi linear \(v(t) = 2t+3\), metode ini secara teoritis eksak. Keterbatasan yang diamati bukanlah dari metode, melainkan dari representasi bilangan floating-point pada komputer. Meskipun secara matematis hasilnya eksak, operasi aritmetika pada komputer dapat menghasilkan error pembulatan yang sangat kecil. Program yang ditulis dengan baik dan penggunaan tipe data \texttt{double} dapat meminimalkan dampak ini, seperti yang terlihat pada hasil di mana kesalahan absolut dan relatif sangat mendekati nol. 
+
+Meskipun Aturan Trapesium standar sudah sangat memadai untuk fungsi linear seperti dalam studi kasus ini, penting untuk dicatat bahwa untuk fungsi yang lebih kompleks dan non-linear, akurasi Aturan Trapesium standar dapat menurun. Dalam konteks ini, penelitian terus berlanjut untuk mengembangkan variasi atau peningkatan dari Aturan Trapesium. Sebagai contoh, Abdulhameed dan Memon (2021) dalam \cite{b_abdulhameed} mengusulkan sebuah "Improved Trapezoidal Rule". Metode yang mereka ajukan bertujuan untuk meningkatkan akurasi dengan cara memodifikasi perhitungan area, khususnya untuk fungsi di mana kurva berada jauh dari garis lurus yang dibentuk oleh Aturan Trapesium standar. Ide dasarnya adalah dengan memperhitungkan area antara garis trapesium konvensional dan garis singgung pada kurva yang paralel dengan garis trapesium tersebut. Jurnal tersebut menunjukkan bahwa metode yang diusulkan dapat memberikan hasil yang jauh lebih akurat untuk beberapa fungsi non-linear orde tinggi dibandingkan dengan Aturan Trapesium konvensional, terutama ketika jumlah interval tunggal atau kecil digunakan. Namun, mereka juga mencatat bahwa untuk fungsi yang berosilasi secara merata di sekitar garis trapesium, Aturan Trapesium standar terkadang masih dapat memberikan hasil yang lebih baik atau sebanding.
+
+Dalam proyek ini, implementasi metode yang ditingkatkan seperti yang diusulkan oleh Abdulhameed dan Memon \cite{b_abdulhameed} tidak dilakukan karena fokus utama adalah pada penerapan Aturan Trapesium standar pada fungsi linear, di mana manfaat dari metode yang lebih kompleks tersebut tidak akan signifikan terlihat. Namun, keberadaan penelitian semacam ini menyoroti pentingnya memilih atau bahkan mengembangkan metode numerik yang sesuai dengan karakteristik spesifik dari fungsi yang diintegrasikan, terutama dalam aplikasi rekayasa yang menuntut akurasi tinggi untuk fungsi non-linear.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=1.0\linewidth]{images/velocity_plot.png}} % Sedikit menyesuaikan lebar jika perlu
@@ -142,14 +149,16 @@ Untuk fungsi non-linear, Aturan Trapesium memiliki kesalahan pemotongan \(O(h^2)
 Gambar \ref{fig:velocity} menunjukkan plot fungsi linear \( v(t) = 2t + 3 \). Area di bawah kurva ini, yang berbentuk trapesium, secara tepat dihitung oleh Aturan Trapesium bahkan dengan satu segmen. Penggunaan banyak segmen pada fungsi linear akan membagi trapesium utama menjadi banyak trapesium kecil, yang jumlah luasnya tetap sama dengan luas trapesium utama.
 
 \section{Kesimpulan}
-Implementasi Aturan Trapesium untuk fungsi kecepatan linear \(v(t) = 2t+3\) berhasil menghitung jarak tempuh benda sebesar 40.0000000000 meter. Hasil numerik ini sesuai dengan solusi analitik, dengan kesalahan absolut dan relatif yang sangat mendekati nol (efektif nol dalam batas presisi program). Hal ini memvalidasi teori bahwa Aturan Trapesium adalah metode yang eksak untuk mengintegrasikan fungsi linear. Perbedaan minor yang mungkin teramati dalam beberapa kasus praktis lebih disebabkan oleh keterbatasan presisi aritmetika floating-point komputer daripada oleh metode itu sendiri. Metode ini terbukti sederhana, mudah diimplementasikan, dan sangat akurat untuk kasus yang sesuai seperti fungsi linear.
+Implementasi Aturan Trapesium untuk fungsi kecepatan linear \(v(t) = 2t+3\) berhasil menghitung jarak tempuh benda sebesar 40.0000000000 meter. Hasil numerik ini sesuai dengan solusi analitik, dengan kesalahan absolut dan relatif yang sangat mendekati nol (efektif nol dalam batas presisi program). Hal ini memvalidasi teori bahwa Aturan Trapesium adalah metode yang eksak untuk mengintegrasikan fungsi linear. Perbedaan minor yang mungkin teramati dalam beberapa kasus praktis lebih disebabkan oleh keterbatasan presisi aritmetika floating-point komputer daripada oleh metode itu sendiri. Metode ini terbukti sederhana, mudah diimplementasikan, dan sangat akurat untuk kasus yang sesuai seperti fungsi linear. Diskusi mengenai penelitian lanjutan seperti metode yang diusulkan oleh Abdulhameed dan Memon \cite{b_abdulhameed} menunjukkan adanya upaya berkelanjutan untuk meningkatkan akurasi metode numerik untuk kasus fungsi yang lebih kompleks.
 
 \section{Link}
 Kode sumber tersedia di: https://github.com/andrewkristofer/TrapezoidalRule-1 \cite{b2}.
 
 \begin{thebibliography}{00}
-\bibitem{b1} S. C. Chapra and R. P. Canale, \textit{Numerical Methods for Engineers}, 7th ed. New York, NY, USA: McGraw-Hill Education, 2015
-\bibitem{b2} Kelompok 1, ``Implementasi Aturan Trapesium \textit{Trapezoidal Rule} untuk Menghitung Jarak Tempuh,'' GitHub, 2025, https://github.com/andrewkristofer/TrapezoidalRule-1 % Tahun disesuaikan jika perlu
+\bibitem{b1} S. C. Chapra and R. P. Canale, \textit{Numerical Methods for Engineers}, 7th ed. New York, NY, USA: McGraw-Hill Education, 2015.
+\bibitem{b2} Kelompok 1, ``Implementasi Aturan Trapesium \textit{Trapezoidal Rule} untuk Menghitung Jarak Tempuh,'' GitHub, 2025, https://github.com/andrewkristofer/TrapezoidalRule-1. % Tahun disesuaikan jika perlu
+\bibitem{b_yeh} S.-T. Yeh, "Using trapezoidal rule for the area under a curve calculation," in \textit{Proc. 27th Annu. SAS® User Group Int. (SUGI’02)}, Cary, NC, USA, 2002, Paper 265-27.
+\bibitem{b_abdulhameed} A. F. Abdulhameed and Q. A. Memon, "An improved Trapezoidal rule for numerical integration," \textit{J. Phys.: Conf. Ser.}, vol. 2090, no. 1, p. 012104, Nov. 2021, doi: 10.1088/1742-6596/2090/1/012104.
 \end{thebibliography}
 
 \end{document}
